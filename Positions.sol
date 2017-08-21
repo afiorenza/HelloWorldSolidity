@@ -24,7 +24,7 @@ contract Positions {
     }
   }
 
-  function getScore (bytes32 team) returns (uint8) {
+  function getScore (bytes32 team) constant returns (uint8) {
     if (!validateTeam(team)) revert();
     return _scores[team];
   }
