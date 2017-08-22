@@ -29,6 +29,9 @@ web3.eth.getAccounts().then(function (addresses) {
     .then(function (newContractInstance) {
       if (newContractInstance) {
         console.log(`Address: ${newContractInstance.options.address}`);
+
+        newContractInstance.methods.validateTeam('NOB').call()
+          .then(console.log)
       }
     });
 });
