@@ -1,8 +1,8 @@
 pragma solidity ^0.4.15;
 
 contract TestList {
-	address[] private _validatorArr = [0x9773412899495e7f6d1ad2ec5f489089b8ee50e0, 0xcb89d5b2b0bf8b06d939130aacd768dece8efd31];
-  address[] private _pendingArr;
+  address[] private _validatorArr;
+	address[] private _pendingArr = [0x218c072046d9accab6c01a182686f0b28df309b1, 0x695bc31ac61b1349e0e76df6cfaf70f6bbbd8442];
 	mapping(address => uint) _indices;
 	address public _disliked;
 	bool private _finalized;
@@ -11,6 +11,7 @@ contract TestList {
   event ChangeFinalized(address[] current_set);
 
 	function TestList() {
+		_validatorArr = _pendingArr;
     for (uint i = 0; i < _validatorArr.length; i++) {
         _indices[_validatorArr[i]] = i;
     }
