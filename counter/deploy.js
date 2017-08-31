@@ -6,7 +6,7 @@ const Web3 = require('web3');
 const web3 = new Web3(new Web3.providers.HttpProvider('http://localhost:8545'));
 
 const contractPath = `${__dirname}/../contracts/Counter.sol`;
-const from = '0xb9cde1e2cc420d47cfbcc183253f206a93b22b3d';
+const from = '0x5e93224c8c4ed4f4387053fb4898f5ba26e9b6d3';
 
 // Read contract from file system
 const contract = fs.readFileSync(contractPath).toString();
