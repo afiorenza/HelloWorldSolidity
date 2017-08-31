@@ -2,3 +2,5 @@
 node_modules
 parity
 parity.log
+accounts.md
+node.pwds
