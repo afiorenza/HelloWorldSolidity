@@ -1,8 +1,9 @@
 pragma solidity ^0.4.15;
 
 contract TestList {
-	address[] private _validatorArr = [0x9773412899495e7f6d1ad2ec5f489089b8ee50e0, 0xcb89d5b2b0bf8b06d939130aacd768dece8efd31];
-  address[] private _pendingArr;
+	address constant private SYSTEM_ADDRESS = 0xfffffffffffffffffffffffffffffffffffffffe;
+  address[] private _validatorArr;
+	address[] private _pendingArr = [0x218c072046d9accab6c01a182686f0b28df309b1, 0x695bc31ac61b1349e0e76df6cfaf70f6bbbd8442];
 	mapping(address => uint) _indices;
 	address public _disliked;
 	bool private _finalized;
@@ -10,7 +11,19 @@ contract TestList {
   event InitiateChange(bytes32 indexed _parent_hash, address[] _new_set);
   event ChangeFinalized(address[] current_set);
 
+
+	modifier when_finalized() {
+		require (finalized);
+		_;
+	}
+
+	modifier only_system_and_not_finalized() {
+		require (msg.sender == SYSTEM_ADDRESS);
+		_;
+	}
+
 	function TestList() {
+		_validatorArr = _pendingArr;
     for (uint i = 0; i < _validatorArr.length; i++) {
         _indices[_validatorArr[i]] = i;
     }
@@ -40,12 +53,12 @@ contract TestList {
     _disliked = validator;
 	}
 
-  function initiateChange() private {
+  function initiateChange() private when_finalized{
 		_finalized = false;
     InitiateChange(block.blockhash(block.number - 1), _pendingArr);
   }
 
-	function finalizeChange() {
+	function finalizeChange() only_system_and_not_finalized{
     _validatorArr = _pendingArr;
     _finalized = true;
     ChangeFinalized(_validatorArr);

@@ -1,6 +1,6 @@
 const Web3 = require('web3');
 
-const from = '0xa6e5a96cc510a700b518e9a454d77c26ce4ec810';
+const from = '0x218c072046d9accab6c01a182686f0b28df309b1';
 const accountToAdd = process.argv[2];
 
 process.on('exit', (code) => {
