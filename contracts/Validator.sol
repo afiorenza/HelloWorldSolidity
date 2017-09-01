@@ -1,7 +1,6 @@
 pragma solidity ^0.4.15;
 
 contract TestList {
-	address constant private SYSTEM_ADDRESS = 0xfffffffffffffffffffffffffffffffffffffffe;
   address[] private _validatorArr;
 	address[] private _pendingArr = [0x218c072046d9accab6c01a182686f0b28df309b1, 0x695bc31ac61b1349e0e76df6cfaf70f6bbbd8442];
 	mapping(address => uint) _indices;
