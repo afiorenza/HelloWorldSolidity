@@ -35,7 +35,7 @@ contract TestList {
   }
 
 	// Remove a validator from the list.
-  function removeValidator(address value) {
+  function removeValidator(address value) returns (bool) {
     for (uint i = 0; i < _validatorArr.length; i++) {
       if (_validatorArr[i] == value) {
         for (uint j = i; j < _pendingArr.length - 1; j++) {
@@ -44,6 +44,9 @@ contract TestList {
         delete _pendingArr[_pendingArr.length - 1];
         _pendingArr.length--;
         initiateChange();
+        return(true);
+      } else {
+        return(false);
       }
     }
   }

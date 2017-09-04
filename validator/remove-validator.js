@@ -28,13 +28,5 @@ contractInstance.methods.reportMalicious(accountToRemove, 1)
       console.log(`Error: ${error}`);
       return;
     }
-    console.log(`Address removed Tx: ${tx}`);
-
-    contractInstance.methods.finalizeChange().send({from}, function (error, tx) {
-      if (error) {
-        console.log(`Error: ${error}`);
-        return;
-      }
-      console.log(`Finish call Tx: ${tx}`);
-    })
+    console.log(`Address removed. Tx: ${tx}`);
   })
