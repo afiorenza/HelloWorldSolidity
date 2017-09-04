@@ -1,8 +1,8 @@
 ** Cuentas en validator
 * #1
-Address: 0x328cd5e51de1f394171ecb18b99b686c086b5a90
+Address: 0xab644a8fc7434d493b4574cd97ee3cf534d4e11c
 Password: password
-parity --config node1.toml --engine-signer 0x328cd5e51de1f394171ecb18b99b686c086b5a90 --author 0x328cd5e51de1f394171ecb18b99b686c086b5a90 --unlock 0x328cd5e51de1f394171ecb18b99b686c086b5a90 --password node.pwds
+parity --config node1.toml --engine-signer 0xab644a8fc7434d493b4574cd97ee3cf534d4e11c --author 0xab644a8fc7434d493b4574cd97ee3cf534d4e11c --unlock 0xab644a8fc7434d493b4574cd97ee3cf534d4e11c --password node.pwds
 
 * #2
 Address: 0x682064592a072fae3143a8bb1c3c504bf07240a4
