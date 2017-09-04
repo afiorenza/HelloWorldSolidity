@@ -5,7 +5,7 @@ db_path = "./parity/io.parity.ethereum/chains"
 keys_path = "./parity/io.parity.ethereum/keys"
 
 [network]
-bootnodes = ["enode://fdafb3a5cb9cd6db2bc0f53408ef1b6057786baacbfb85826f3ce610e6f03949ed6bf2b9965849cb13bc12bc5ddb6c224a232aae33084c2ba07b7fdf758f0752@192.241.235.242:30303"]
+bootnodes = ["enode://3c38ed4a6823e205053a83ccfecd06afe7ff7ebcc0c123e800be41f5ba8d1de86351000471f5a7cd26f917248a49c2c21195a4a03e9f4576f1bbe99675e2d40b@192.241.235.242:30303"]
 
 [ui]
 force = true
