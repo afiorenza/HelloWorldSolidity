@@ -34,18 +34,19 @@ contract TestList {
     initiateChange();
   }
 
-	// Remove a validator from the list. TODO: terminar!
-	function reportMalicious(address validator, uint blockNumber) {
-		_pendingArr[_indices[validator]] = _pendingArr[_pendingArr.length-1];
-		delete _indices[validator];
-		delete _pendingArr[_pendingArr.length-1];
-		_pendingArr.length--;
-		InitiateChange(block.blockhash(block.number - 1), _pendingArr);
-	}
-
-	function reportBenign(address validator) {
-    _disliked = validator;
-	}
+	// Remove a validator from the list.
+  function removeValidator(address value) {
+    for (uint i = 0; i < _validatorArr.length; i++) {
+      if (_validatorArr[i] == value) {
+        for (uint j = i; j < _pendingArr.length - 1; j++) {
+            _pendingArr[j] = _pendingArr[j + 1];
+        }
+        delete _pendingArr[_pendingArr.length - 1];
+        _pendingArr.length--;
+        initiateChange();
+      }
+    }
+  }
 
   function initiateChange() private when_finalized{
 		_finalized = false;
