@@ -1,4 +1,4 @@
-pragma solidity ^0.4.15;
+pragma solidity ^0.4.13;
 
 contract TestList {
   address[] private _validatorArr;
@@ -12,12 +12,7 @@ contract TestList {
 
 
 	modifier when_finalized() {
-		require (finalized);
-		_;
-	}
-
-	modifier only_system_and_not_finalized() {
-		require (msg.sender == SYSTEM_ADDRESS);
+		require (_finalized);
 		_;
 	}
 
@@ -57,7 +52,7 @@ contract TestList {
     InitiateChange(block.blockhash(block.number - 1), _pendingArr);
   }
 
-	function finalizeChange() only_system_and_not_finalized{
+	function finalizeChange() {
     _validatorArr = _pendingArr;
     _finalized = true;
     ChangeFinalized(_validatorArr);

@@ -4,6 +4,15 @@ base_path = "./parity/io.parity.ethereum"
 db_path = "./parity/io.parity.ethereum/chains"
 keys_path = "./parity/io.parity.ethereum/keys"
 
+[network]
+bootnodes = ["enode://3e8a9a0e7edef27bbf6679d2bdf48fcad58a48d9d5babc4abdd95b065bce8be02311902d729149385af8d75a7ae9ee786e06ff07bb04d5e56a34e7d0b2632b44@192.241.235.242:30303"]
+
+[ui]
+force = true
+
+[rpc]
+apis = ["web3", "eth", "net", "personal", "parity", "parity_set", "traces", "rpc", "parity_accounts"]
+
 [mining]
 force_sealing = true
 reseal_on_txs = "all"
