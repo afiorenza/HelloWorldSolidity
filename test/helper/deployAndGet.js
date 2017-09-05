@@ -24,8 +24,6 @@ function deployAndGet (name, cb) {
           cb(instance, from, null);
         })
     })
-
-
   })
 }
 
