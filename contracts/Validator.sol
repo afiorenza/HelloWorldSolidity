@@ -2,7 +2,7 @@ pragma solidity ^0.4.13;
 
 contract TestList {
   address[] private _validatorArr;
-	address[] private _pendingArr = [0x58209ab738946fa645970c2c0999a8de0b16d49b];
+	address[] private _pendingArr = [0x96b6bedde85211f35bd27313dc746dd69b62de14];
 	mapping(address => uint) _indices;
 	address public _disliked;
 	bool private _finalized;
