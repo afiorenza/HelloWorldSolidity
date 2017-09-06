@@ -1,26 +1,20 @@
 pragma solidity ^0.4.13;
 
-contract TestList {
+contract Validator {
   address[] private _validatorArr;
-	address[] private _pendingArr = [0x96b6bedde85211f35bd27313dc746dd69b62de14];
-	mapping(address => uint) _indices;
-	address public _disliked;
-	bool private _finalized;
+	address[] private _pendingArr = [0x4FBAe531acaAa2A8A16327d46922BCEF801CAD15];
+	bool private _finalized = true;
 
   event InitiateChange(bytes32 indexed _parent_hash, address[] _new_set);
   event ChangeFinalized(address[] current_set);
 
+  modifier finalized {
+    require(_finalized);
+    _;
+  }
 
-	modifier when_finalized() {
-		require (_finalized);
-		_;
-	}
-
-	function TestList() {
+	function Validator() {
 		_validatorArr = _pendingArr;
-    for (uint i = 0; i < _validatorArr.length; i++) {
-        _indices[_validatorArr[i]] = i;
-    }
 	}
 
 	// Called on every block to update node validator list.
@@ -29,29 +23,26 @@ contract TestList {
 	}
 
 	// Expand the list of validators.
-	function addValidator(address validator) {
-		_pendingArr.push(validator);
+	function addValidator(address newValidator) finalized {
+    _pendingArr.push(newValidator);
     initiateChange();
   }
 
 	// Remove a validator from the list.
-  function removeValidator(address value) returns (bool) {
-    for (uint i = 0; i < _validatorArr.length; i++) {
-      if (_validatorArr[i] == value) {
+  function removeValidator(address removeValidator) finalized {
+    for (uint i = 0; i < _pendingArr.length; i++) {
+      if (_pendingArr[i] == removeValidator) {
         for (uint j = i; j < _pendingArr.length - 1; j++) {
             _pendingArr[j] = _pendingArr[j + 1];
         }
         delete _pendingArr[_pendingArr.length - 1];
         _pendingArr.length--;
         initiateChange();
-        return(true);
-      } else {
-        return(false);
       }
     }
   }
 
-  function initiateChange() private when_finalized{
+  function initiateChange() private {
 		_finalized = false;
     InitiateChange(block.blockhash(block.number - 1), _pendingArr);
   }
