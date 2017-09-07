@@ -2,7 +2,7 @@ pragma solidity ^0.4.13;
 
 contract Validator {
   address[] private _validatorArr;
-	address[] private _pendingArr = [0x4FBAe531acaAa2A8A16327d46922BCEF801CAD15];
+	address[] private _pendingArr = [0xe3b5DB1d899246B5a0A1f4a954086DC0dBdA0E91];
 	bool private _finalized = true;
 
   event InitiateChange(bytes32 indexed _parent_hash, address[] _new_set);
@@ -29,9 +29,9 @@ contract Validator {
   }
 
 	// Remove a validator from the list.
-  function removeValidator(address removeValidator) finalized {
+  function removeValidator(address validator) finalized {
     for (uint i = 0; i < _pendingArr.length; i++) {
-      if (_pendingArr[i] == removeValidator) {
+      if (_pendingArr[i] == validator) {
         for (uint j = i; j < _pendingArr.length - 1; j++) {
             _pendingArr[j] = _pendingArr[j + 1];
         }
