@@ -4,7 +4,7 @@ const Web3 = require('web3');
 const argv = require('yargs').argv;
 
 const contractPath = `${__dirname}/../contracts/Counter.sol`;
-const address = '0xC6536C84e24496A939cbE2A2C107Ab4aA0Bbaf25';
+const address = '0x4574625aa947D720B981cE73261950B8aCcDb9C5';
 
 // Connects to blockchain
 const web3 = new Web3(new Web3.providers.HttpProvider('http://localhost:8545'));

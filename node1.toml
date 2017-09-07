@@ -3,9 +3,10 @@ chain = "configuration.json"
 base_path = "./parity/io.parity.ethereum"
 db_path = "./parity/io.parity.ethereum/chains"
 keys_path = "./parity/io.parity.ethereum/keys"
+no_persistent_txqueue = true
 
 [network]
-bootnodes = ["enode://1230284adcd5676875c47c9784bcc0b7dd8918b61ae1b9f1a2eb8fcdd7dc714bd8d5bf7d936e3446d3f20389020c0e9f1844aa92bb1eab9e0051e0fbdfd1db97@192.241.235.242:30303"]
+reserved_peers = "./reserved-peers.txt"
 
 [ui]
 force = true
@@ -16,7 +17,6 @@ apis = ["web3", "eth", "net", "personal", "parity", "parity_set", "traces", "rpc
 [mining]
 force_sealing = true
 reseal_on_txs = "none"
-usd_per_tx = "0"
 
 [misc]
 log_file = "parity.log"
