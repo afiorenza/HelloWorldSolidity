@@ -3,7 +3,6 @@ chain = "configuration.json"
 base_path = "./parity/io.parity.ethereum"
 db_path = "./parity/io.parity.ethereum/chains"
 keys_path = "./parity/io.parity.ethereum/keys"
-no_persistent_txqueue = true
 
 [network]
 reserved_peers = "./reserved-peers.txt"

@@ -1,6 +1,6 @@
 const Web3 = require('web3');
 
-const from = '0x86ea533e6ee4a06ec7ccd49c67bf69163e5d8502';
+const from = '0x8e3Cb81475191b33aa42bd4Bb644b32a6814c944';
 const accountToRemove = process.argv[2];
 
 process.on('exit', (code) => {
